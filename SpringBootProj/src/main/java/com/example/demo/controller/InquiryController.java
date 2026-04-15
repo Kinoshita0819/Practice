@@ -18,16 +18,17 @@ public class InquiryController {
 	@GetMapping("/InquiryForm")
 	public String inputForm(@ModelAttribute InquiryForm formData,Model model) {
 		
-		model.addAllAttributes("formData",new InquiryForm());
+		model.addAttribute("dataForm",new InquiryForm());
 		
 		return "InquiryForm";
 	}
 	
 	@PostMapping("/InquiryResult")
-	public String Result(@ModelAttribute InquiryForm formData, Model model) {
+	public String Result(@ModelAttribute InquiryForm dataForm, Model model) {
 		
-		inquiryService.doInquiryEntry(formData);
-		model.addAttribute("formData",formData);
+		inquiryService.doInquiryEntry(dataForm);
+		model.addAttribute("dataForm",dataForm);
 		return "InquiryResult";
 	}
 }
+
